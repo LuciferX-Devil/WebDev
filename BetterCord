@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+    <html>
+        <head>
+            <title>Chatroom</title>
+
+            <style>
+                *{                    
+                    font-family:"gg sans", "Noto Sans", "Helvetica Neue", Helvetica;
+                }
+
+                #side{
+                    background-image:linear-gradient(#0B0A2A,#0E1342);  
+                }
+
+                html,body{
+                    height : 100vh;
+                    width:100vw;
+                    position:fixed;
+                    padding:0;
+                    top:0;
+                    bottom:0;
+                    left:0;
+                    right:0;
+                    margin:0;
+                }
+
+                div.main{
+                    height:100%;
+                    width:100%;
+                    position:relative;
+                    background-color:#212082;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                div.header{
+                    background-color:transparent;
+                    position:relative;
+                    width:100%;
+                    height:21px;
+                    color:rgb(178, 178, 178);
+                }
+
+                div.actarea{
+                    height:calc(100% - 21px);
+                    width:100%;
+                    position:relative;
+                    display:flex;
+                    flex-direction:row;
+                }
+
+                div.leftsect{
+                    display:flex;
+                    flex-direction:row;
+                    position:relative;
+                    height:100%;
+                    width:313px;
+                }
+                
+                div.list{
+                    background-color:transparent;
+                    width:72px;
+                    position:relative;
+                }
+
+                div.rpart{
+                    border-top-left-radius:10px;
+                    width:241px;
+                    position:relative;
+                    display:flex;
+                    flex-direction:column;
+                }
+
+                div.globsearch{
+                    height:49px;
+                    background-color:transparent;
+                    display:flex;     
+                    justify-content:center;
+                    align-items:center;   
+                    border-bottom:1px solid rgb(9, 14, 47);   
+                }
+
+                input.globs{
+                    color:white;
+                    background-color:#1a1884;
+                    position:relative;
+                    width:220px;
+                    height:25px;
+                    border-radius:5px;
+                    border:none;
+                }
+
+                    input.globs::-webkit-input-placeholder{
+                        color:rgb(178, 178, 178);
+                        padding:5px;
+                        font-size:12.5px;
+                    }
+
+                div.sidebar{
+                    background-color:transparent;
+                    height:calc(100% - 103px);
+                    width:100%;
+                    position:relative;
+                    overflow-y: auto; 
+                }
+
+                    div.sidebar::-webkit-scrollbar{
+                        width:11px;
+                    }
+
+                    div.sidebar::-webkit-scrollbar-thumb {
+                        border-radius: 10px;
+                    }
+
+                    div.sidebar::-webkit-scrollbar-thumb:hover {
+                        background-color:rgb(9, 14, 47);
+                        border:2px solid rgb(0, 5, 97);
+                    }
+
+                    div.sidebar::-webkit-scrollbar-track {
+                        background-color:transparent;
+                    }
+
+                    div.sidebar::-webkit-scrollbar-button {
+                        display: none; 
+                    }
+
+                div.profoot{
+                    background-color: rgb(4, 4, 27);
+                    color:gray;
+                    position:relative;
+                    width:100%;
+                    height:53px;
+                }
+
+                div.sidebar p{
+                    font-weight:bold; 
+                    color:gray;
+                    font-size:30px;
+                    width:98%;
+                    position:relative;
+                    margin:1%;
+                    border-radius:5px;
+                }
+
+                div.mainchat{ 
+                    width:calc(100% - 313px);
+                    height:100%;
+                    position:relative;   
+                    background-color:rgb(9, 14, 47);
+                    display:flex;
+                    flex-direction:column;
+                }
+
+                div.channame{
+                    height:50px;
+                    background-color:transparent;
+                }
+
+                div.chat{
+                    height:calc(100% - 118px);
+                    background-color:transparent;
+                    color:white;
+                    font-size:16px;                    
+                    overflow-y: auto;
+                    margin-right:8px;
+                }
+
+                    div.chat::-webkit-scrollbar{
+                        width:10px;
+                    }
+
+                    div.chat::-webkit-scrollbar-thumb{
+                        background-color:#989FEF;
+                        border-radius:10px;
+                    }
+
+                    div.chat::-webkit-scrollbar-track{
+                        background-color:#212082;
+                        border-radius:10px;
+                    }
+                
+                    div.chat::-webkit-scrollbar-button{
+                        display: none;
+                    }
+
+                div.msgbox{
+                    height:68px;
+                    background-color:transparent;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class="main">
+                <div class="header">
+                    <b>BetterCord</b>
+                </div>
+                <div class="actarea">
+                    <div class="leftsect">
+                        <div class="list">
+                            <div>
+                                <p>1</p>
+                                <p>2</p>
+                                <p>3</p>
+                                <p>4</p>
+                                <p>5</p>
+                            </div>
+                        </div>
+                        <div class="rpart" id="side">
+                            <div class="globsearch">
+                                <input class="globs" type="text" placeholder="Find or start a conversation">
+                            </div>
+                            <div class="sidebar">
+                                <div class="menu" style="display:flex;flex-direction:column;padding-left:10px;">
+                                    <div style="display:flex;">
+                                        <img src="C:\Users\Devil\Documents\Bettercord\menu-FRIENDS.png" style="height:45px;width:50px;position:relative;"></img>
+                                        <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Friends</p>
+                                    </div>
+                                    <div style="display:flex">
+                                        <img src="C:\Users\Devil\Documents\Bettercord\menu-FRIENDS.png" style="height:45px;width:50px;position:relative;"></img>
+                                        <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Hydro</p>
+                                    </div>
+                                    <div style="display:flex">
+                                        <img src="C:\Users\Devil\Documents\Bettercord\menu-FRIENDS.png" style="height:45px;width:50px;position:relative;"></img>
+                                        <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Shop</p>
+                                    </div>
+                                </div>
+                                <p>Item 1</p>
+                                <p>Item 2</p>
+                                <p>Item 3</p>
+                                <p>Item 4</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                                <p>Item 5</p>
+                            </div>
+                            <div class="profoot">
+                                LUCIFER
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainchat">
+                        <div class="channame">
+
+                        </div>
+                        <div class="chat">
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                        </div>
+                    </div> 
+                </div>      
+            </div>
+        </body>
+    </html>
