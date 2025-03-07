@@ -12,6 +12,10 @@
                     background-image:linear-gradient(#0B0A2A,#0E1342);  
                 }
 
+                #main{
+                    background-image:linear-gradient(#030132,#0d0c28);
+                }
+
                 html,body{
                     height : 100vh;
                     width:100vw;
@@ -96,29 +100,40 @@
                         font-size:12.5px;
                     }
 
+                    input.globs:focus{
+                        outline:none;
+                    }
+
                 div.sidebar{
                     background-color:transparent;
                     height:calc(100% - 103px);
-                    width:100%;
+                    width:99%;
                     position:relative;
                     overflow-y: auto; 
+                    visibility: hidden;
+                    margin-right:1%;
                 }
 
+                    div.sdbar_content{ 
+                        position:relative;                   
+                        visibility:visible;
+                    }
+
+                    div.sidebar:hover{
+                        visibility: visible;
+                    }
+
                     div.sidebar::-webkit-scrollbar{
-                        width:11px;
+                        width:5px;
                     }
 
                     div.sidebar::-webkit-scrollbar-thumb {
+                        background-color:rgb(5, 7, 25);
                         border-radius: 10px;
                     }
 
-                    div.sidebar::-webkit-scrollbar-thumb:hover {
-                        background-color:rgb(9, 14, 47);
-                        border:2px solid rgb(0, 5, 97);
-                    }
-
                     div.sidebar::-webkit-scrollbar-track {
-                        background-color:transparent;
+                        background-color:inherit;
                     }
 
                     div.sidebar::-webkit-scrollbar-button {
@@ -146,8 +161,7 @@
                 div.mainchat{ 
                     width:calc(100% - 313px);
                     height:100%;
-                    position:relative;   
-                    background-color:rgb(9, 14, 47);
+                    position:relative; 
                     display:flex;
                     flex-direction:column;
                 }
@@ -155,7 +169,59 @@
                 div.channame{
                     height:50px;
                     background-color:transparent;
+                    display:flex;
+                    align-items:center;
                 }
+
+                div.channame img{
+                    height:26px;
+                    width:26px;
+                    margin-left:8px;
+                }
+
+                div.member{
+                    display:flex;
+                    align-items:center;
+                    justify-content:start;
+                    height:26px;
+                    width:calc(100% - 500px);
+                    background-color:transparent;
+                }
+
+                div.member p{
+                    font-size:16px;
+                    font-weight:bold;
+                    color:white;
+                }
+
+                div.buttons{
+                    display:flex;
+                    justify-content:end;
+                    height:26px;
+                    width:500px;
+                    align-items:center;
+                    margin-right:10px;
+                    background-color:#030132;
+                }
+
+                input.Message_srch{
+                    background-color:#0E1342;
+                    height:26px;
+                    border:hidden;
+                    padding-left:7px;
+                    margin-left:7px;
+                    width:150px;
+                    border-radius:2.5px;
+                }
+
+                    input.Message_srch::-webkit-input-placeholder{
+                        color:gray;
+                    }
+
+                    input.Message_srch:focus{
+                        width:300px;
+                        outline: none;
+                    }
 
                 div.chat{
                     height:calc(100% - 118px);
@@ -164,10 +230,11 @@
                     font-size:16px;                    
                     overflow-y: auto;
                     margin-right:8px;
+                    margin-left:8px;
                 }
 
                     div.chat::-webkit-scrollbar{
-                        width:10px;
+                        width:8px;
                     }
 
                     div.chat::-webkit-scrollbar-thumb{
@@ -184,10 +251,79 @@
                         display: none;
                     }
 
-                div.msgbox{
+                div.Msg_box_cont{
+                    position:relative;
                     height:68px;
-                    background-color:transparent;
+                    width:98%;
+                    margin-left:1%;
+                    margin-right:1%;
+                    background-color:red;
+                    display:flex;
                 }
+
+                div.Msg_box_cont img{
+                    height:26px;
+                    width:26px;
+                }
+
+                div.LeftUI{
+                    position:relative;
+                    height:45px;
+                    width:calc(100% - 165px);
+                    border-radius:7px;
+                    background-color:green;
+                    /*background-image:linear-gradient(to right,#0E1342,#0B0A2A);*/
+                    display:flex;
+                }
+
+                div.msgelements{
+                    background-color:hotpink;
+                    height:100%;
+                    width:30px;
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                }
+
+                input.Msg{
+                    height:100%;
+                    width:calc(100% - 300px);
+                    background-color:transparent;
+                    border:hidden;
+                }
+
+                    input.Msg::-webkit-input-placeholder{
+                        color:gray;
+                        font-size:16px;
+                    }
+
+                    input.Msg:focus{
+                        outline:none;
+                    }
+
+                .RightUI, .rightcolp, .rightrigd{                    
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                }
+
+                div.RightUI{
+                    width:165px;
+                    height:45px;
+                    position:relative;
+                    background-color: yellow;     /*#0B0A2A;*/
+                }
+
+                div.rightrigd{
+                    height:100%;
+                    width:calc(100% - 60px);
+                }
+
+                div.rightcolp{
+                    height:100%;
+                    width:60px;
+                }
+
             </style>
         </head>
 
@@ -212,50 +348,65 @@
                                 <input class="globs" type="text" placeholder="Find or start a conversation">
                             </div>
                             <div class="sidebar">
-                                <div class="menu" style="display:flex;flex-direction:column;padding-left:10px;">
-                                    <div style="display:flex;">
-                                        <img src="C:\Users\Devil\Documents\Bettercord\menu-FRIENDS.png" style="height:45px;width:50px;position:relative;"></img>
-                                        <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Friends</p>
+                                <div class="sdbar_content">
+                                    <div class="menu" style="display:flex;flex-direction:column;padding-left:10px;">
+                                        <div style="display:flex;align-items:center;justify-content:space-evenly;">
+                                            <img src="https://media.discordapp.net/attachments/974629600506290219/1346754593777909760/image.png?ex=67c95674&is=67c804f4&hm=cd23b70f8bf5ea83c9dd42377504404fdebc665b1a333ac89dd8fa14b04b30b1&=&format=webp&quality=lossless&width=234&height=240" style="height:25px;width:25px;position:relative;"></img>
+                                            <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Friends</p>
+                                        </div>
+                                        <div style="display:flex;align-items:center;justify-content:space-between;">
+                                            <img src="https://media.discordapp.net/attachments/974629600506290219/1346750049186484234/image.png?ex=67c95239&is=67c800b9&hm=3a8559a353a5fc93b096713daeb12cfb18a52a67d34fdc54861945c9bd0d7571&=&format=webp&quality=lossless&width=267&height=213" style="height:25px;width:35px;position:relative;"></img>
+                                            <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Hydro</p>
+                                        </div>
+                                        <div style="display:flex;align-items:center;justify-content:space-between;">
+                                            <img src="https://media.discordapp.net/attachments/974629600506290219/1346750337872302100/image.png?ex=67c9527d&is=67c800fd&hm=b122a44aae41065b7a5dc216f1cf9f3fe59ee4b905f0e9abc90e802fd2f1efee&=&format=webp&quality=lossless&width=245&height=249" style="height:25px;width:25px;position:relative;"></img>
+                                            <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Shop</p>
+                                        </div>
                                     </div>
-                                    <div style="display:flex">
-                                        <img src="C:\Users\Devil\Documents\Bettercord\menu-FRIENDS.png" style="height:45px;width:50px;position:relative;"></img>
-                                        <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Hydro</p>
-                                    </div>
-                                    <div style="display:flex">
-                                        <img src="C:\Users\Devil\Documents\Bettercord\menu-FRIENDS.png" style="height:45px;width:50px;position:relative;"></img>
-                                        <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Shop</p>
-                                    </div>
+                                    <p>Item 1</p>
+                                    <p>Item 2</p>
+                                    <p>Item 3</p>
+                                    <p>Item 4</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
+                                    <p>Item 5</p>
                                 </div>
-                                <p>Item 1</p>
-                                <p>Item 2</p>
-                                <p>Item 3</p>
-                                <p>Item 4</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
-                                <p>Item 5</p>
                             </div>
                             <div class="profoot">
                                 LUCIFER
                             </div>
                         </div>
                     </div>
-                    <div class="mainchat">
+                    <div class="mainchat" id="main">
                         <div class="channame">
-
+                            <div class="member">
+                                <img src = "https://media.discordapp.net/attachments/974629600506290219/1346767858750853130/1714463825421.png?ex=67c962cf&is=67c8114f&hm=f88f831c914de4c7d389d7d1ff9f688a0f2701e705a9a8e4d5594eb56d06d02d&=&format=webp&quality=lossless&width=1488&height=837" style="width:45px;">
+                                <p>Member_1</p>
+                            </div>  
+                            <div class="buttons">
+                                <img src="https://media.discordapp.net/attachments/974629600506290219/1347467103174656031/image.png?ex=67cbee08&is=67ca9c88&hm=9190ef8165622290ed03b4ba6c261784c3652f0e33505b7109a42da0f2f0e2d2&=&format=webp&quality=lossless&width=101&height=101">
+                                <img src="https://media.discordapp.net/attachments/974629600506290219/1347467788842700840/image.png?ex=67cbeeab&is=67ca9d2b&hm=f6fdf34ceb395d8a7cc91f893f87f0e8216e852bd35dc6bacfe66a43e3d7edd5&=&format=webp&quality=lossless&width=101&height=101">
+                                <img src="https://media.discordapp.net/attachments/974629600506290219/1347468280633491466/image.png?ex=67cbef20&is=67ca9da0&hm=80ac922e0841e811dd75f8be0f50537e1cf88903d4811529208b92dc41298702&=&format=webp&quality=lossless&width=101&height=101">
+                                <img src="https://media.discordapp.net/attachments/974629600506290219/1347469487410122832/image.png?ex=67cbf040&is=67ca9ec0&hm=6e7c48392932fcef9b9ac76bbe9ed4e4d3ab990b0317ed7fd4c004434a4f424f&=&format=webp&quality=lossless&width=101&height=101">
+                                <img src="https://media.discordapp.net/attachments/974629600506290219/1347477247413719091/image.png?ex=67cbf77a&is=67caa5fa&hm=9b54310fc91bbad053763aff8b1e13af045b7d90024d600dc90ad359b1511f9f&=&format=webp&quality=lossless&width=101&height=101">
+                                <input class="Message_srch" type="text" placeholder="Search">
+                                <img src="https://media.discordapp.net/attachments/974629600506290219/1347477785089675346/image.png?ex=67cbf7fa&is=67caa67a&hm=b8bac16d5396c4aae599bf0617d7b80946de523be1b137fb5437a46c75e8b824&=&format=webp&quality=lossless&width=101&height=101">
+                                <img src="https://media.discordapp.net/attachments/974629600506290219/1347478135846866975/image.png?ex=67cbf84e&is=67caa6ce&hm=b9b5a087f119d89c094b74e085dd1dfe016c86ecd4094aba52c289a08c7f9ef7&=&format=webp&quality=lossless&width=101&height=101">
+                            </div>                        
                         </div>
                         <div class="chat">
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
@@ -282,6 +433,36 @@
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed cumque culpa, distinctio maiores obcaecati sint magnam harum ipsum doloremque dolorum rerum. Deleniti iusto nostrum placeat quas ab repudiandae aut labore!</p>
+                        </div>
+                        <div class="Msg_box_cont">
+                            <div class="LeftUI">
+                                <div class="msgelements">
+                                    <img src="https://media.discordapp.net/attachments/974629600506290219/1346876708296327168/image.png?ex=67ca70ef&is=67c91f6f&hm=9728a8e4554340f76904f0c358675797bb9055de799ab6f0a5c8f3b6d177f9f2&=&format=webp&quality=lossless&width=207&height=209">
+                                </div>
+                                <input class="Msg" type="text" placeholder="Message @Member_1">
+                            </div>
+                            <div class="RightUI">
+                                <div class="rightcolp">
+                                    <div class="msgelements">
+                                        <img src="https://media.discordapp.net/attachments/974629600506290219/1347170035013128243/image.png?ex=67cad95d&is=67c987dd&hm=79834daba33fa14ea57a7eee585571bc1a27a4928ca0139f4a08579dc059019f&=&format=webp&quality=lossless&width=101&height=101">
+                                    </div>
+                                    <div class="msgelements">
+                                        <img src="https://media.discordapp.net/attachments/974629600506290219/1347175338379313152/image.png?ex=67cade4d&is=67c98ccd&hm=73379e42f81049a99147ed30fa7852fcecaf35fd67bfebf46d6644375a97d1c0&=&format=webp&quality=lossless&width=101&height=101">
+                                    </div>
+                                </div>
+                                <div class="rightrigd">
+                                    <div class="msgelements">
+                                        <img src="https://media.discordapp.net/attachments/974629600506290219/1347173559537238026/image.png?ex=67cadca5&is=67c98b25&hm=729b3e232d6294770d71ad7b9f7bf7e3f6dd2e3236775530d6c4871175d20062&=&format=webp&quality=lossless&width=101&height=101">
+                                    </div>
+                                    <div class="msgelements">
+                                        <img src="https://media.discordapp.net/attachments/974629600506290219/1347173147388018688/image.png?ex=67cadc43&is=67c98ac3&hm=341419e6a30c88fbf5ab14519349b23708517849dc0d6aaaa1aa5f5df6335fd0&=&format=webp&quality=lossless&width=102&height=101">
+                                    </div>
+                                    <div style="border-radius:7px;background-color:hotpink;height:100%;width:45px;display:flex;justify-content:center;align-items:center;">
+                                        <img src="https://media.discordapp.net/attachments/974629600506290219/1346889622436974622/image.png?ex=67c9d435&is=67c882b5&hm=9253adbcd413f5d874414f921c942d11b0efe0cec8187ddc681a70d046401a8f&=&format=webp&quality=lossless&width=126&height=128">
+                                    </div>
+                                </div>
+                                
+                            </div>
                         </div>
                     </div> 
                 </div>      
