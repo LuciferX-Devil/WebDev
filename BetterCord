@@ -3,10 +3,18 @@
         <head>
             <title>Chatroom</title>
 
+            <script src="Theme.js" defer></script>
+
             <style>
                 *{                    
                     font-family:"gg sans", "Noto Sans", "Helvetica Neue", Helvetica;
                 }
+
+                :root{
+                        --thumbColor1:rgb(5, 7, 25);
+                        --thumbColor2: #989FEF;
+                        --trackColor2: #212082;
+                    }
 
                 #side{
                     background-image:linear-gradient(#0B0A2A,#0E1342);  
@@ -36,6 +44,7 @@
                     display: flex;
                     flex-direction: column;
                 }
+                
 
                 div.header{
                     background-color:transparent;
@@ -43,6 +52,7 @@
                     width:100%;
                     height:21px;
                     color:rgb(178, 178, 178);
+                    user-select: none;
                 }
 
                 div.actarea{
@@ -59,13 +69,28 @@
                     position:relative;
                     height:100%;
                     width:313px;
+                    user-select: none;
                 }
                 
                 div.list{
                     background-color:transparent;
                     width:72px;
                     position:relative;
+                    display:flex;
+                    flex-direction:column;
+                    align-items:center;
                 }
+
+                    div.list>img{
+                        margin-top:10px;
+                        height:50px;
+                        width:50px;
+                        border-radius:20px;
+                    }
+
+                    div.list>img:hover{
+                        border-radius:15px;
+                    }
 
                 div.rpart{
                     border-top-left-radius:10px;
@@ -86,17 +111,18 @@
 
                 input.globs{
                     color:white;
+                    font-size:12.5px;
                     background-color:#1a1884;
                     position:relative;
                     width:220px;
                     height:25px;
                     border-radius:5px;
                     border:none;
+                    padding-left:5px;
                 }
 
                     input.globs::-webkit-input-placeholder{
                         color:rgb(178, 178, 178);
-                        padding:5px;
                         font-size:12.5px;
                     }
 
@@ -128,7 +154,7 @@
                     }
 
                     div.sidebar::-webkit-scrollbar-thumb {
-                        background-color:rgb(5, 7, 25);
+                        background-color: var(--thumbColor1);
                         border-radius: 10px;
                     }
 
@@ -206,6 +232,7 @@
 
                 input.Message_srch{
                     background-color:#0E1342;
+                    color:white;
                     height:26px;
                     border:hidden;
                     padding-left:7px;
@@ -238,12 +265,12 @@
                     }
 
                     div.chat::-webkit-scrollbar-thumb{
-                        background-color:#989FEF;
+                        background-color: var(--thumbColor2);
                         border-radius:10px;
                     }
 
                     div.chat::-webkit-scrollbar-track{
-                        background-color:#212082;
+                        background-color: var(--trackColor2);
                         border-radius:10px;
                     }
                 
@@ -256,8 +283,6 @@
                     height:68px;
                     width:98%;
                     margin-left:1%;
-                    margin-right:1%;
-                    /*background-color:red;*/
                     display:flex;
                 }
 
@@ -271,13 +296,12 @@
                     height:45px;
                     width:calc(100% - 165px);
                     border-radius:7px;
-                    /*background-color:green;*/
                     background-image:linear-gradient(to right,#0E1342,#0B0A2A);
                     display:flex;
                 }
 
                 div.msgelements{
-                    background-color:transparent;           /*hotpink*/
+                    background-color:transparent;         
                     height:100%;
                     width:30px;
                     display:flex;
@@ -314,7 +338,7 @@
                     width:165px;
                     height:45px;
                     position:relative;
-                    background-color: #0B0A2A;;     /*yellow*/
+                    background-color: #0B0A2A;     
                 }
 
                 div.rightrigd{
@@ -338,13 +362,10 @@
                 <div class="actarea">
                     <div class="leftsect">
                         <div class="list">
-                            <div>
-                                <p>1</p>
-                                <p>2</p>
-                                <p>3</p>
-                                <p>4</p>
-                                <p>5</p>
-                            </div>
+                            <img src="https://i.postimg.cc/HncxFhgY/mars.png" title="Mars Red" onClick="themeMars();">   
+                            <img src="https://i.postimg.cc/K8MRx4gF/midblu.png" title="Midnight Blue" onClick="themeMidBlu();">      
+                            <img src="https://i.postimg.cc/wjYrHDH9/mintgreen.png" title="Mint Green" onClick="themeLitGreen();">   
+                            <img src="https://i.postimg.cc/wjYrHDH9/mintgreen.png" title="Golden Paradise" onClick="themeMariGold();">                  
                         </div>
                         <div class="rpart" id="side">
                             <div class="globsearch">
@@ -354,16 +375,16 @@
                                 <div class="sdbar_content">
                                     <div class="menu" style="display:flex;flex-direction:column;padding-left:10px;">
                                         <div style="display:flex;align-items:center;justify-content:space-evenly;">
-                                            <img src="https://media.discordapp.net/attachments/974629600506290219/1346754593777909760/image.png?ex=67c95674&is=67c804f4&hm=cd23b70f8bf5ea83c9dd42377504404fdebc665b1a333ac89dd8fa14b04b30b1&=&format=webp&quality=lossless&width=234&height=240" style="height:25px;width:25px;position:relative;"></img>
+                                            <img src="https://i.postimg.cc/5ykQmFcH/Friends.png" style="height:25px;width:25px;position:relative;"></img>
                                             <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Friends</p>
                                         </div>
                                         <div style="display:flex;align-items:center;justify-content:space-between;">
-                                            <img src="https://media.discordapp.net/attachments/974629600506290219/1346750049186484234/image.png?ex=67c95239&is=67c800b9&hm=3a8559a353a5fc93b096713daeb12cfb18a52a67d34fdc54861945c9bd0d7571&=&format=webp&quality=lossless&width=267&height=213" style="height:25px;width:35px;position:relative;"></img>
+                                            <img src="https://i.postimg.cc/RVzS06GC/hydro.png" style="height:25px;width:25px;position:relative;" title="It's cursed because we hate microtransactions."></img>
                                             <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Hydro</p>
                                         </div>
                                         <div style="display:flex;align-items:center;justify-content:space-between;">
-                                            <img src="https://media.discordapp.net/attachments/974629600506290219/1346750337872302100/image.png?ex=67c9527d&is=67c800fd&hm=b122a44aae41065b7a5dc216f1cf9f3fe59ee4b905f0e9abc90e802fd2f1efee&=&format=webp&quality=lossless&width=245&height=249" style="height:25px;width:25px;position:relative;"></img>
-                                            <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;">Shop</p>
+                                            <img src="https://i.postimg.cc/Dz2rqwg1/shop.png" style="height:25px;width:25px;position:relative;"></img>
+                                            <p style="height:100%;width:100%;position:relative;font-size:20px;padding-top:9px;padding-bottom:9px;" title="Yup everthing's free. Nothing to see here.">Shop</p>
                                         </div>
                                     </div>
                                     <p>Item 1</p>
