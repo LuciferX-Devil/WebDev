@@ -17,6 +17,19 @@ function createMsg(time,msg){
     return div
 }
 
-function adMsg(){
+function addMsg() {
+    const inp=document.getElementById("inp")
     
+    const msgContent = inp.value
+    const timeStamp = new Date().toLocaleTimeString()
+    const messageDiv = createMsg(timeStamp, msgContent)
+    document.getElementById("messages").appendChild(messageDiv)
+    inp.value = ""
 }
+
+document.getElementById("inp").addEventListener("keydown", (event) => {
+    console.log(event.key);
+    if (event.key === "Enter") {
+        addMsg();
+    }
+});
