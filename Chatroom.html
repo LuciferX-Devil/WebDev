@@ -3,8 +3,7 @@
         <head>
             <title>Chatroom</title>
 
-            <script src="Theme.js" defer></script>
-            <script src="msg.js" defer></script>
+            
 
             <style>
                 *{                    
@@ -15,6 +14,8 @@
                         --thumbColor1:rgb(5, 7, 25);
                         --thumbColor2: #989FEF;
                         --trackColor2: #212082;
+                        --msg_balloon: #1a1884;
+                        --receiver: rgb(34, 17, 216);
                     }
 
                 #side{
@@ -44,6 +45,15 @@
                     background-color:#212082;
                     display: flex;
                     flex-direction: column;
+                }
+
+                div.Settings_Window{
+                    width:250px;
+                    height:150px;
+                    background-color:#989FEF;
+                    top:50%;
+                    left:50%;
+                    position: absolute;
                 }
                 
 
@@ -82,16 +92,45 @@
                     align-items:center;
                 }
 
-                    div.list>img{
-                        margin-top:10px;
-                        height:50px;
-                        width:50px;
-                        border-radius:20px;
+                    div.list_top{
+                        height:calc(100% - 72px);
+                        width:100%;
+                        display:flex;
+                        flex-direction:column;
+                        align-items:center;
+                    }  
+                    
+                        div.list_top>img{
+                                margin-top:10px;
+                                height:50px;
+                                width:50px;
+                                border-radius:20px;
+                            }
+
+                            div.list_top>img:hover{
+                                border-radius:15px;
+                            }
+                            
+                    div.settings{
+                        display:flex;
+                        height:72px;
+                        width:100%;
+                        justify-content:center;
+                        align-items:center;
+                        border-top: 1px solid gray;
+                        background-color:#212082;
                     }
 
-                    div.list>img:hover{
-                        border-radius:15px;
-                    }
+                        div.settings img{
+                                height:50px;
+                                width:50px;
+                                transition:transform 2s;
+                            }
+
+                            div.settings img:hover{
+                                transform:rotate(360deg);
+                            }
+
 
                 div.rpart{
                     border-top-left-radius:10px;
@@ -166,10 +205,6 @@
                     div.sidebar::-webkit-scrollbar-button {
                         display: none; 
                     }
-
-                div.menu img{
-                    
-                }
 
                 div.profoot{
                     background-color: rgb(4, 4, 27);
@@ -275,6 +310,9 @@
                     overflow-y: auto;
                     margin-right:8px;
                     margin-left:8px;
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:flex-end;
                 }
 
                     div.chat::-webkit-scrollbar{
@@ -373,50 +411,77 @@
                     width:60px;
                 }
 
+                div.rec_msg{
+                    display:flex;
+                    margin:10px 0;
+                }
+
+                    div.rec-msg-body{
+                        display:flex;
+                        flex-direction:column;
+                        background-color:var(--receiver);
+                        padding:10px;
+                        border-radius:8px;
+                        max-width:40%;
+                        margin-right:10px;
+                    }
+
                 div.message {
                     display: flex;
+                    flex-direction:row-reverse;
                     margin: 10px 0;
                     align-items: flex-start;
                 }
 
-                img.msg-pfp {
+                img.msg-pfp{
                     width: 70px;
                     height: 40px;
                     border-radius: 50%;
                     margin-right: 10px;
                 }
-
-                div.msg-body {
+                
+                div.msg-body{
                     display: flex;
                     flex-direction: column;
-                    background-color: #1a1884;
+                    background-color: var(--msg_balloon); 
                     padding: 10px;
+                    margin-right:10px;
                     border-radius: 8px;
-                    max-width: 60%;
+                    max-width: 40%;
                 }
 
-                div.msg-header {
+                div.alt_msg_body{
+                    display: flex;
+                    flex-direction: column;
+                    background-color: var(--msg_balloon); 
+                    padding: 10px;
+                    margin-right:10px;
+                    border-radius: 8px;
+                    max-width: calc(100%-40px);
+                }
+                
+                div.msg-header{
                     display: flex;
                     align-items: center;
                     gap: 8px;
                     margin-bottom: 5px;
                 }
 
-                span.msg-user {
-                    font-weight: bold;
-                    color: #fff;
-                }
+                    span.msg-user {
+                        font-weight: bold;
+                        color: #fff;
+                    }
 
-                span.msg-time {
-                    font-size: 12px;
-                    color: #ccc;
-                }
+                    span.msg-time {
+                        font-size: 12px;
+                        color: #ccc;
+                    }
 
-div.msg-content {
-    color: #ddd;
-    font-size: 14.5px;
-    word-wrap: break-word;
-}
+                div.msg-content {
+                    color: #ddd;
+                    font-size: 14.5px;
+                    word-wrap: break-word;
+                }
 
             </style>
         </head>
@@ -429,10 +494,15 @@ div.msg-content {
                 <div class="actarea">
                     <div class="leftsect">
                         <div class="list">
-                            <img src="https://i.postimg.cc/HncxFhgY/mars.png" title="Mars Red" onClick="themeMars();">   
-                            <img src="https://i.postimg.cc/K8MRx4gF/midblu.png" title="Midnight Blue" onClick="themeMidBlu();">      
-                            <img src="https://i.postimg.cc/wjYrHDH9/mintgreen.png" title="Mint Green" onClick="themeLitGreen();">   
-                            <img src="https://i.postimg.cc/wjYrHDH9/mintgreen.png" title="Golden Paradise" onClick="themeMariGold();">                  
+                            <div class="list_top">
+                                <img src="https://i.postimg.cc/HncxFhgY/mars.png" title="Mars Red" onClick="themeMars();">   
+                                <img src="https://i.postimg.cc/K8MRx4gF/midblu.png" title="Midnight Blue" onClick="themeMidBlu();">      
+                                <img src="https://i.postimg.cc/wjYrHDH9/mintgreen.png" title="Mint Green" onClick="themeLitGreen();">   
+                                <img src="C:\Users\DEVIL\Pictures\Chatroom\marigold.png" title="Golden Paradise" onClick="themeMariGold();">                  
+                            </div>
+                            <div class="settings">
+                                <img src="https://i.postimg.cc/XvYCrR57/settings.png" title="Settings" onClick="openSettings()">
+                            </div>
                         </div>
                         <div class="rpart" id="side">
                             <div class="globsearch">
@@ -455,6 +525,7 @@ div.msg-content {
                                         </div>
                                     </div>
                                     <p>Item1</p>
+                                    <p>Item2</p>
                                 </div>
                             </div>
                             <div class="profoot">
@@ -479,7 +550,7 @@ div.msg-content {
                                 <img src="https://i.postimg.cc/C5pbDx89/help.png">
                             </div>                        
                         </div>
-                        <div class="chat" id="messages">
+                        <div class="chat" id="chat">
                             
                         </div>
                         <div class="Msg_box_cont">
@@ -515,5 +586,8 @@ div.msg-content {
                     </div> 
                 </div>      
             </div>
+            <script src="Theme.js" defer></script>
+            <script src="msg.js" defer></script>
+            <script src="settings.js" defer></script>
         </body>
     </html>
